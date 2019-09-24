@@ -7,16 +7,19 @@ import matplotlib.pyplot as plt
 def read_data():
 
     """ Read all data from bearing B11 and store in data_B11 list """
-    folder_path = './data/FEMTOBearingDataSet/Learning_set/Bearing1_1/'
-    files_path = sorted(os.listdir(folder_path))
-    
-    data_B11 = []
-    for file_path in files_path:
-        if file_path.endswith(".csv"):
-            # Reading horizontal [4] and vertical [5] vibration.
-            data_B11.append(pd.read_csv(folder_path + '/' + file_path, usecols=[4, 5], names=['h','v'], header=None).values)
-
-    return np.array(data_B11)
+    folder_path = '../FEMTOBearingDataSet/Learning_set/Bearing1_1/'
+    # test = pd.DataFrame()
+    # for i in range(1, 2803):
+    #     f_num = str(i).rjust(5, '0')
+    #     test = test.append(pd.read_csv(folder_path + 'acc_{}.csv'.format(f_num),
+    #                     names=['hora', 
+    #                              'minuto', 
+    #                              'segundo', 
+    #                              'm_sec', 
+    #                              'h_acc', 
+    #                              'v_acc']))
+    test = pd.read_csv('bearing1_v_acc.csv')
+    return test
 
 
 def fft(data):
@@ -79,5 +82,9 @@ def fft(data):
 
 if __name__ == "__main__":
     
-    data_B11 = read_data()
-    fft(data_B11)
+    # data_B11 = read_data()
+    df = read_data()
+    print('read OK!')
+    # df = df['v_acc']
+    # df.to_csv('bearing1_v_acc.csv' )
+    # fft(data_B11)
