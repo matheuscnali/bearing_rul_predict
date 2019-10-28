@@ -7,7 +7,7 @@ pip install -r requirements.txt
 
 ## To run
 ```
-python preprocessing.py
+python main.py
 ```
 
 ## Analysing Code Performance - cProfile
