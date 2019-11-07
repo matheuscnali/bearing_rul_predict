@@ -24,25 +24,25 @@ class Bearing:
     def save_r(self):
         """ Save 'self.results' in binary format """
         for result_name in self.results.keys():
-            with open("data/processed_data/%s/%s.pickle" % (self.name, result_name), "wb") as output:
+            with open("data/processed_data/%s/%s/%s.pickle" % (self.dataset, self.name, result_name), "wb") as output:
                 pickle.dump(self.results[result_name], output, protocol=pickle.HIGHEST_PROTOCOL)
 
     def load_r(self, name):
         """ Load all or specified result """
         if name == "all":
-            for name in os.listdir("data/processed_data/%s/" % (self.name)): 
+            for name in os.listdir("data/processed_data/%s/%s/" % (self.dataset, self.name)): 
                 if name.endswith(".pickle"):
-                    with open("data/processed_data/%s/%s" % (self.name, name), "rb") as input_file:
+                    with open("data/processed_data/%s/%s/%s" % (self.dataset, self.name, name), "rb") as input_file:
                         # Removing .pickle from name and loading.
                         self.results[name[:-7]] = pickle.load(input_file)    
         else:
-            self.results[name] = pickle.load("data/processed_data/%s/%s.pickle" % (self.name, name))
+            self.results[name] = pickle.load("data/processed_data/%s/%s/%s.pickle" % (self.dataset, self.name, name))
 
 
-def csvs_merge(path, files_info, bearing):
+def csvs_merge(path, files_info, bearing, dataset):
     """ 
     Merge all .csv files in a 'folder'.
-    The merged file is saved in "data/processed_data/'folder'/merged_files.csv".
+    The merged file is saved in "data/processed_data/'dataset'/'folder'/merged_files.csv".
     """
 
     for filename_type in files_info.keys():
@@ -61,7 +61,7 @@ def csvs_merge(path, files_info, bearing):
                                   usecols=files_info[filename_type]['usecols'], 
                                   names=files_info[filename_type]['names'], header=None, engine='c') for f in csv_files])
 
-        combined_csv.to_csv("data/processed_data/%s/%s_merged.csv" %(bearing, filename_type), index=False, encoding='utf-8-sig')
+        combined_csv.to_csv("data/processed_data/%s/%s/%s_merged.csv" %(dataset, bearing, filename_type), index=False, encoding='utf-8-sig')
 
 
 def cumsum(data):
