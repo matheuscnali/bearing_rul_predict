@@ -32,7 +32,7 @@ This project expects a data folder in root with the following structure:
         └── processed_data
 ```
 
-A data folder with FEMTO bearing dataset ¹ and processed data results is avaliable at this [link](https://drive.google.com/drive/folders/1dP97Tozd2TA2jZTYULV4Z9pLmro3gV6W?usp=sharing).
+A data folder with FEMTO bearing dataset [¹](#References) and processed data results is avaliable at this [link](https://drive.google.com/drive/folders/17f_NW5FZIyXsCSuc9FI7zYvou9neUzOP?usp=sharing).
 
 ## Run
 ```
@@ -54,7 +54,7 @@ snakeviz results.prof
 <img src="docs/images/all_bearings_results.png"
      alt="All femto dataset bearings results"/>
 
-## Original datasets files.
+## Original datasets files
 ### [FEMTO bearing dataset.](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/)
 
 
