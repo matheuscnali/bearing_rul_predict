@@ -25,6 +25,7 @@ class Bearing:
         self.data = data 
         self.fault_kind = fault_kind
         self.results = {}
+        self.lifetime = -1
 
         if restore_results:
             self.load_r('all')
@@ -195,13 +196,13 @@ def scatter3d_plot(filename, x, y, z, cmin=0, cmax=0.2):
    
     fig = go.Figure(data=[go.Scatter3d(
     x=x,
-    y=y*2,
+    y=y,
     z=z,
     mode='markers',
     marker=dict(
         size=1.5,
         cmin=0,
-        cmax=0.05,
+        cmax=0.07,
         color=z,                # set color to an array/list of desired values
         colorscale='Viridis',   # choose a colorscale
         opacity=0.5
@@ -210,10 +211,27 @@ def scatter3d_plot(filename, x, y, z, cmin=0, cmax=0.2):
     )])
 
     # tight layout
-    fig.update_layout(margin=dict(l=0, r=0, b=0, t=0), 
+    fig.update_layout(margin=dict(l=0, r=0, b=0, t=0),
+                      template='plotly_dark', 
                       scene=dict(
                       xaxis_title='Frequency (Hz)',
                       yaxis_title='Recording',
                       zaxis_title='Magnititude'))
             
     plotly.offline.plot(fig, filename=filename)
+
+
+def poly_coeffs(x, y, degree):
+
+    return np.polyfit(x=x, y=y, deg=degree)
+
+
+def get_explosion_index(df, target):
+    highest = 0
+    target_index = 0
+    for i in range(target-200, target):
+        if df.hankel_v.iloc[i] < 0.95:
+            if highest < df.hankel_v.iloc[i]:
+                highest = df.hankel_v.iloc[i]
+                target_index = i
+    return target_index
