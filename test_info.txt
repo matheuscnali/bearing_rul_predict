@@ -1,5 +1,0 @@
-test_1.csv - qnt=1000, grau=2
-test_2.csv - qnt=1000, grau=3
-test_3.csv - qnt=500 , grau=3
-test_4.csv - qnt=1000, grau=1
-test_5.csv - qnt=1000, grau=2, n_estimators=100
