@@ -1,3 +1,8 @@
+# Bearing RUL Predict
+This project aims to predict the remaining useful life of a bearing by analysing vibration data with Random Forest regressor. We currently built a failure probability estimator by trainning the Random Forest regressor with polynomial coefficients of a cummulative sum curve and a linear decreasing array (1 to 0) which starts from the explosion index (where a correlation coefficient stats to fall) to the end of the bearing life.
+
+\* The correlation coefficient is used to assess the condition of bearing degradation.
+
 # Installing and configuring required packages
 ```
 pip install -r requirements.txt
@@ -30,6 +35,36 @@ This notebook:
 3. Train a random forest model where X are the coefficients of a fitted polynomial in cumsum data and Y are an decreasing array (from 1 to 0) which size is the number of recordings from the explosion index (index where the correlation coefficient is bellow 0.95) to the end of life. 
 4. Test in all bearings
 
+## failure_probability_predict
+To be documented.
+
+# Results
+
+## Cummulative sum, RMS and Correlation coefficients from some bearings:
+
+<img src="docs/images/some_results.png">
+
+## FFT Spectrogram of some bearings. The plot is ( frequency X time X amplitude ):
+<img src="docs/images/fft1.png">
+<img src="docs/images/fft2.png">
+
+## Random Forest Scores.
+## The first column is the bearing used to train and the first row is the bearing used to test. 
+<img src="docs/images/scores_random_forest.png">
+
+\* We choose Bearing 2_4 for trainning.
+
+## Bearing1_1 cummulative sum coefficient interpolation (second image is a zoom in the inperpolation part):
+<img src="docs/images/coefficient_interpolation.png">
+
+## Failure probability prediction
+## Bearing failure probability. Red is the real life expectancy and blue is predicted.
+<img src="docs/images/failure_probability1.png">
+
+<img src="docs/images/failure_probability2.png">
+
+<img src="docs/images/failure_probability3.png">
+
 # Analysing Code Performance - cProfile
 ```
 python -m cProfile -o results.prof code.py
@@ -44,6 +79,13 @@ snakeviz results.prof
 
 # Original datasets files
 ### [FEMTO bearing dataset ¹.](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/)
+
+# Next steps
+
+- Use the regressor to predict RUL time.
+- Document failure_probability_predict notebook.
+
+
 
 # Developers
 * [Bruna Yukari Fujii Yoshida](https://github.com/brunayfy)
