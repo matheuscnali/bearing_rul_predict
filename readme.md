@@ -49,7 +49,7 @@ To be documented.
 <img src="docs/images/fft2.png">
 
 ## Random Forest Scores.
-## The first column is the bearing used to train and the first row is the bearing used to test. 
+### The first column is the bearing used to train and the first row is the bearing used to test. 
 <img src="docs/images/scores_random_forest.png">
 
 \* We choose Bearing 2_4 for trainning.
@@ -58,7 +58,7 @@ To be documented.
 <img src="docs/images/coefficient_interpolation.png">
 
 ## Failure probability prediction
-## Bearing failure probability. Red is the real life expectancy and blue is predicted.
+### Bearing failure probability. Red is the real life expectancy and blue is the predicted.
 <img src="docs/images/failure_probability1.png">
 
 <img src="docs/images/failure_probability2.png">
