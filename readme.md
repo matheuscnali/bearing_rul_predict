@@ -20,7 +20,8 @@ This notebook process all .csv in orignal FEMTO dataset. For each bearing, it:
 (In original FEMTO dataset some files are separated by ',' and others by ';'). 
 
 ## data_processing
-This notebook loads the bearing model with the specified data (.csv or binary) and cumpute the needed results for regression (cumsum, hankel matrix singular values and correlation coefficients).
+This notebook loads the bearing model with the specified data (.csv or binary) and compute the needed results for regression (cumsum, hankel matrix singular values and correlation coefficients).
+It also process some other data analysis functions (fft, emd, rms, ...) which are commented. In the end there are some plots to see the results.
 
 ## regression
 This notebook:
